@@ -9,7 +9,7 @@ export default function Logo({ src, ...rest }) {
           variant: 'links.logo',
           display: 'flex',
           cursor: 'pointer',
-          mr: 15,
+          mr: 10,
         }}
         {... rest}
     >

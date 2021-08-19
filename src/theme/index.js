@@ -6,11 +6,13 @@ export default {
     heading: '#0F2137', // primary heading color
     heading_secondary: '#0F2137', // heading color
     background: '#FFFFFF', // body background color
+    before_sticky: '#fdaa8f',
+    after_sticky: '#17c671',
     background_secondary: '#F9FBFD', // secondary background color
     border_color: '#E5ECF4', // border color
     yellow: '#FFA740', // border color
-    primary: '#EA3A60', // primary button and link color
-    secondary: '#2563FF', // secondary color - can be used for hover states
+    primary: '#fdaa8f', // primary button and link color
+    secondary: '#17c671', // secondary color - can be used for hover states
     muted: '#E4E4E4', // muted color
     accent: '#609', // a contrast color for emphasizing UI
 
@@ -229,6 +231,7 @@ export default {
     },
     logo: {
       display: 'flex',
+      width: 300,
     },
   },
   images: {

@@ -3,7 +3,7 @@ import { jsx, Container, Flex, Button } from 'theme-ui';
 import { keyframes } from '@emotion/core';
 import { Link } from 'react-scroll';
 import Logo from 'components/logo';
-import LogoDark from 'assets/logo.svg';
+import LogoDark from 'assets/logo.png';
 import MobileDrawer from './mobile-drawer';
 import menuItems from './header.data';
 
@@ -51,28 +51,39 @@ const styles = {
   header: {
     color: 'text',
     fontWeight: 'body',
-    py: 4,
+    py: 2,
     width: '100%',
     position: 'absolute',
     top: 0,
     left: 0,
-    backgroundColor: 'transparent',
+    backgroundColor: 'primary',
     transition: 'all 0.4s ease',
     animation: `${positionAnim} 0.4s ease`,
     '.donate__btn': {
+      backgroundColor: 'secondary',
+      color: 'black',
       flexShrink: 0,
       mr: [15, 20, null, null, 0],
       ml: ['auto', null, null, null, 0],
     },
     '&.sticky': {
       position: 'fixed',
-      backgroundColor: 'background',
+      backgroundColor: 'secondary',
       color: '#000000',
       boxShadow: '0 1px 2px rgba(0, 0, 0, 0.06)',
-      py: 3,
+      py: 1,
       'nev > a': {
         color: 'text',
       },
+      '.donate__btn': {
+        backgroundColor: 'primary',
+        color: "black"
+      },
+      a: {
+        '&:sticky': {
+          color: 'white',
+        },
+      }
     },
   },
   container: {
@@ -97,7 +108,7 @@ const styles = {
         color: 'primary',
       },
       '&.active': {
-        color: 'primary',
+        color: 'white',
       },
     },
   },

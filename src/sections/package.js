@@ -12,10 +12,10 @@ const packages = {
   monthly: [
     {
       id: 1,
-      name: 'Free Plan',
-      description: 'For Small teams or office',
-      buttonText: 'Start free trail',
-      priceWithUnit: '$0',
+      name: 'Individual Plan',
+      description: 'For Individuals - Landing Page',
+      buttonText: 'Start individual trail',
+      priceWithUnit: '$200',
       points: [
         {
           id: 1,
@@ -47,9 +47,8 @@ const packages = {
       id: 2,
       name: 'Business king',
       description: 'For Enterprise business',
-      priceWithUnit: '$15',
-      buttonText: 'Create account',
-      anotherOption: 'Or Start 14 Days trail',
+      priceWithUnit: '$1000',
+      buttonText: 'Get in Touch',
       points: [
         {
           id: 1,
@@ -83,9 +82,8 @@ const packages = {
       headerIcon: <IoIosCheckmarkCircle />,
       name: 'Pro Master',
       description: 'For pro level developers',
-      priceWithUnit: '$24',
-      buttonText: 'Create account',
-      anotherOption: 'Or Start 14 Days trail',
+      priceWithUnit: '$3000',
+      buttonText: 'Get in Touch',
       points: [
         {
           id: 1,
@@ -117,10 +115,10 @@ const packages = {
   annual: [
     {
       id: 1,
-      name: 'Free Plan',
-      description: 'For Small teams or office',
-      buttonText: 'Start free trail',
-      priceWithUnit: '$0',
+      name: 'Individual Plan',
+      description: 'For Individuals - Landing Page',
+      buttonText: 'Start individual trail',
+      priceWithUnit: '$2400',
       points: [
         {
           id: 1,
@@ -152,9 +150,8 @@ const packages = {
       id: 2,
       name: 'Business king',
       description: 'For Enterprise business',
-      priceWithUnit: '$25',
-      buttonText: 'Create account',
-      anotherOption: 'Or Start 10 Days trail',
+      priceWithUnit: '$24000',
+      buttonText: 'Get in Touch',
       points: [
         {
           id: 1,
@@ -188,9 +185,8 @@ const packages = {
       headerIcon: <IoIosCheckmarkCircle />,
       name: 'Pro Master',
       description: 'For pro level developers',
-      priceWithUnit: '$39',
-      buttonText: 'Create account',
-      anotherOption: 'Or Start 10 Days trail',
+      priceWithUnit: '$36000',
+      buttonText: 'Get in Touch',
       points: [
         {
           id: 1,
@@ -241,6 +237,18 @@ const responsive = {
 
 export default function Package() {
   const { monthly, annual } = packages;
+  const [state, setState] = useState({
+    active: 'monthly',
+    pricingPlan: monthly
+  })
+
+  const handlePricingPlan = (plan) => {
+    if(plan === "annual"){
+      setState({active: "annual", pricingPlan: annual})
+    }else {
+      setState({active: "monthly", pricingPlan: monthly})
+    }
+  }
 
   const sliderParams = {
     additionalTransfrom: 0,
@@ -266,7 +274,45 @@ export default function Package() {
   };
 
   return (
-    <h1>Package</h1>
+      <section id="pricing" sx={{variant: 'section.pricing'}}>
+        <Container>
+          <SectionHeader
+              slogan="Pricing Plan"
+              title="Choose your pricing plan"
+          />
+          <Flex sx={styles.buttonGroup}>
+            <Box sx={styles.buttonGroupInner}>
+              <button
+                  className={state.active === "monthly" ? 'active' : ''}
+                  type='button'
+                  aria-label="Monthly"
+                  onClick={() => handlePricingPlan('monthly')}
+              >
+                Monthly Plan
+              </button>
+              <button
+                  className={state.active === "annual" ? 'active' : ''}
+                  type='button'
+                  aria-label="Annual"
+                  onClick={() => handlePricingPlan('annual')}
+              >
+                Annual Plan
+              </button>
+            </Box>
+          </Flex>
+          <Box sx={styles.pricingWrapper} className="pricing__wrapper">
+            <Carousel {...sliderParams}>
+              {state.pricingPlan.map((packageData) => (
+                  <Box sx={styles.pricingItem} key={packageData.id}>
+                    <PriceCard
+                        data={packageData}
+                    />
+                  </Box>
+              ))}
+            </Carousel>
+          </Box>
+        </Container>
+      </section>
   );
 }
 

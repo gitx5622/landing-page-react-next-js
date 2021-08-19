@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Container, Box, Image } from 'theme-ui';
+import { Container, Box, Image } from 'theme-ui';
 import TextFeature from 'components/text-feature';
 
 import FeatureThumb from 'assets/core-feature.png';
@@ -19,7 +18,7 @@ export default function CoreFeature() {
    <section sx={{variant: 'section.coreFeature'}}>
     <Container sx={styles.containerBox}>
       <Box sx={styles.contentBox}>
-        <TextFeature 
+        <TextFeature
           subTitle={data.subTitle}
           title={data.title}
           description={data.description}
@@ -45,6 +44,7 @@ const styles = {
     justifyContent: 'space-between',
     flexWrap: ['wrap', null, null, 'nowrap'],
     pb: [0, 7, 0, null, 7],
+    pt: [4, null, null, 1]
   },
   contentBox: {
     flexShrink: 0,
